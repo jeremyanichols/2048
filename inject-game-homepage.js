@@ -22,7 +22,7 @@
 
         /* ── iframe element ───────────────────────── */
         const frame = document.createElement('iframe');
-        frame.src = '/2048/'; // Ensure this path is correct
+        frame.src = '2048/'; // Ensure this path is correct
         frame.style.opacity = '0'; // Initially hidden, will be shown after theme confirmation
         frame.title = '2048 Game';
         frame.setAttribute('allowtransparency', 'true');
