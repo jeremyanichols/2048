@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2048 Game</title>
+    <script>
+        // Immediately apply theme from URL to HTML element
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const themeParam = params.get('theme');
+            let themeToAdd = 'sf-dark-theme'; // Default to dark
+            let themeToRemove = 'sf-light-theme';
+
+            if (themeParam === 'light') {
+                themeToAdd = 'sf-light-theme';
+                themeToRemove = 'sf-dark-theme';
+            }
+
+            document.documentElement.classList.remove(themeToRemove);
+            document.documentElement.classList.add(themeToAdd);
+            // console.log('2048 Game (inline head script): Applied initial theme to <html>:', themeToAdd);
+        })();
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="game-header">
+            <h1 class="main-title">2048 game</h1>
+            <p class="sub-title">Join the numbers game and get to the 2048 tile!</p>
+        </div>
+
+        <div class="game-info-bar">
+            <div class="info-section score-section current-score-section">
+                <span class="info-label">Score</span>
+                <span id="score" class="info-value">0</span>
+            </div>
+            <div class="info-section score-section best-score-section">
+                <span class="info-label">Best</span>
+                <span id="best-score" class="info-value">0</span>
+            </div>
+            <div class="info-section how-to-play-section">
+                <span class="info-label">How to play</span>
+                <p class="instructions-inline">Move the tiles using arrow keys. <br> Same numbered tiles merge into one.
+                </p>
+            </div>
+            <div class="info-section share-section">
+                <span class="info-label">Share</span>
+                <div class="share-icons">
+                    <a href="#" id="share-x-link" target="_blank" rel="noopener noreferrer"
+                        aria-label="Share high score on X">
+                        <svg class="x-logo" width="24" height="24" viewBox="0 0 1200 1227" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"
+                                fill="currentColor" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-container-wrapper">
+            <div class="game-container">
+                <div class="game-message">
+                    <p></p>
+                    <button class="retry-button">Try again</button>
+                </div>
+                <div id="tile-container">
+                    <!-- Tiles will be added here by script.js -->
+                    <!-- We can dynamically add grid-cell divs here if needed for styling empty cells -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Add the new stake button section -->
+        <div class="stake-section">
+            <div class="button-group">
+                <button class="new-game-button">
+                    NEW GAME
+                </button>
+                <a href="https://stake.fish" class="stake-button">
+                    STAKE 2048 ETH →
+                </a>
+            </div>
+            <p class="stake-text">860,320 ETH staked with us</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1112 @@
+/* Reset and Base Styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --sf-lime: #BCF000;
+    --sf-text-on-lime: #1A202C;
+    /* Dark text for lime buttons */
+
+    /* Dark Mode (Default) */
+    --game-text-color: #E2E8F0;
+    /* Light gray for text */
+    --game-secondary-text-color: #A0AEC0;
+    /* Medium gray for less important text */
+    --game-container-bg: transparent;
+    /* Transparent game area */
+    --grid-bg: rgba(255, 255, 255, 0.05);
+    /* Subtle background for the grid lines area */
+    --score-box-bg: rgba(255, 255, 255, 0.08);
+    --button-bg: var(--sf-lime);
+    --button-text: var(--sf-text-on-lime);
+    --button-hover-bg: #a8d000;
+    /* Darker lime */
+    --message-bg: rgba(0, 0, 0, 0.7);
+    --message-text: #FFFFFF;
+
+    /* Base stakefish colors */
+    --tile-base-bg: var(--sf-lime);
+    --tile-base-text: var(--sf-text-on-lime);
+
+    /* Dark mode: Subtle variations of stakefish green */
+    --tile-2-bg: #666666;
+    --tile-2-text: #FFFFFF;
+    --tile-4-bg: #999999;
+    --tile-4-text: #FFFFFF;
+    --tile-8-bg: #e6e6e6;
+    --tile-8-text: #000000;
+    --tile-16-bg: #c6fa00;
+    --tile-16-text: #000000;
+    /* Black text */
+    --tile-32-bg: #d0ff14;
+    --tile-32-text: #000000;
+    /* Black text */
+    --tile-64-bg: #d9ff33;
+    --tile-64-text: #000000;
+    /* Black text */
+    --tile-128-bg: #e1ff52;
+    --tile-128-text: #000000;
+    /* Black text */
+    --tile-256-bg: #e8ff71;
+    --tile-256-text: #000000;
+    /* Black text */
+    --tile-512-bg: #eeff90;
+    --tile-512-text: #000000;
+    /* Already black */
+    --tile-1024-bg: #f4ffae;
+    --tile-1024-text: #000000;
+    /* Already black */
+    --tile-2048-bg: #f9ffcc;
+    --tile-2048-text: #000000;
+    /* Already black */
+    --tile-super-bg: var(--sf-lime);
+    /* stakefish green */
+    --tile-super-text: #000000;
+    /* Black text */
+
+    --tile-default-bg: var(--tile-base-bg);
+    --tile-default-text: var(--tile-base-text);
+
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    --font-secondary-body: 'Noto Sans Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    /* New font variable */
+
+    /* New variables for layout */
+    --top-bar-bg-light: #FFFFFF;
+    /* White background for top bar in light mode */
+    --top-bar-text-light: #000000;
+    /* Black text for top bar in light mode */
+    --top-bar-label-light: #6c757d;
+    /* Screenshot's light gray for labels e.g. "Current score" */
+    --top-bar-subtitle-light: #6c757d;
+    /* Screenshot's light gray for subtitle */
+    --info-bar-divider-light: #dee2e6;
+    /* Light gray for dividers in info bar */
+
+    --top-bar-bg-dark: transparent;
+    /* Changed from #1E1E1E to transparent */
+    --top-bar-text-dark: #E0E0E0;
+    /* Light text for dark mode */
+    --top-bar-label-dark: #9E9E9E;
+    /* Lighter grey for labels in dark mode */
+    --top-bar-subtitle-dark: #B0B0B0;
+    /* Lighter gray for subtitle in dark mode */
+    --info-bar-divider-dark: #424242;
+    /* Darker gray for dividers in dark mode */
+
+    --game-board-bg-light: #000000;
+    /* Black game board in light mode (as per screenshot) */
+    --game-board-bg-dark: #000000;
+    /* Black game board in dark mode (as per screenshot) */
+    --grid-lines-light: #333333;
+    /* Updated grid lines color */
+    --grid-lines-dark: #333333;
+    /* Updated grid lines color */
+    --game-area-padding: 15px;
+    /* Padding around the game board itself */
+    --grid-gap: 10px;
+    /* Gap between grid cells, forming the lines */
+
+    /* Update dark mode container background */
+    --game-container-bg-dark: #1A1A1A;
+    /* For the actual game grid area */
+}
+
+/* New style for the header image */
+.game-header-image {
+    display: none !important;
+    /* Force hide this image to prevent layout shifts */
+    /* max-width: 100%; */
+    /* height: auto; */
+    /* margin: 0 auto 15px auto; */
+    /* border-radius: 8px; */
+}
+
+/* Apply to both html and body within the iframe for full transparency */
+body {
+    font-family: var(--font-primary);
+    background-color: var(--current-body-bg);
+    color: var(--current-game-text-color);
+    margin: 0;
+    padding: 0;
+    /* Reset all padding first */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 100%;
+    /* Make body height relative to iframe, not viewport */
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+    position: relative;
+}
+
+/* New theme-specific background rules for html and body */
+html.sf-dark-theme,
+body.sf-dark-theme {
+    background-color: #1b1d21 !important;
+    /* Replace with the color you find */
+    color: var(--game-text-color);
+    /* Ensure text color is also set here */
+}
+
+html.sf-light-theme,
+body.sf-light-theme {
+    background-color: #FFFFFF !important;
+    /* Light theme iframe page background */
+    color: var(--game-text-color);
+    /* Ensure text color is also set here */
+}
+
+/* Ensure html and body base styles are still present if not covered by above */
+html,
+body {
+    font-family: var(--font-secondary-body);
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    /* Or 100% if preferred */
+    overflow: hidden !important;
+    position: relative;
+}
+
+/* Light theme variable overrides when body has .sf-light-theme class */
+body.sf-light-theme {
+    --game-text-color: var(--top-bar-text-light);
+    --game-secondary-text-color: var(--top-bar-label-light);
+    --grid-bg: rgba(0, 0, 0, 0.04);
+    --score-box-bg: rgba(0, 0, 0, 0.06);
+    --message-bg: rgba(255, 255, 255, 0.8);
+    --message-text: #1A202C;
+
+    /* Light mode: Black backgrounds with varying green text */
+    --tile-base-bg: #000000;
+    --tile-base-text: var(--sf-lime);
+
+    /* Light mode layout colors */
+    --current-top-bar-bg: var(--top-bar-bg-light);
+    --current-top-bar-text: var(--top-bar-text-light);
+    --current-top-bar-label: var(--top-bar-label-light);
+    --current-top-bar-subtitle: var(--top-bar-subtitle-light);
+    --current-info-bar-divider: var(--info-bar-divider-light);
+    --current-game-board-bg: var(--game-board-bg-light);
+    --current-grid-lines: var(--grid-lines-light);
+}
+
+/* Dark mode specific layout variables (applied by default or via .sf-dark-theme) */
+body {
+    --current-top-bar-bg: var(--top-bar-bg-dark);
+    --current-top-bar-text: var(--top-bar-text-dark);
+    --current-top-bar-label: var(--top-bar-label-dark);
+    --current-top-bar-subtitle: var(--top-bar-subtitle-dark);
+    --current-info-bar-divider: var(--info-bar-divider-dark);
+    --current-game-board-bg: var(--game-board-bg-dark);
+    --current-grid-lines: var(--grid-lines-dark);
+}
+
+body.sf-dark-theme {
+    /* Explicit dark theme class */
+    --game-text-color: var(--top-bar-text-dark);
+    --game-secondary-text-color: var(--top-bar-label-dark);
+    --current-top-bar-bg: var(--top-bar-bg-dark);
+    --current-top-bar-text: var(--top-bar-text-dark);
+    --current-top-bar-label: var(--top-bar-label-dark);
+    --current-top-bar-subtitle: var(--top-bar-subtitle-dark);
+    --current-info-bar-divider: var(--info-bar-divider-dark);
+    --current-game-board-bg: var(--game-board-bg-dark);
+    --current-grid-lines: var(--grid-lines-dark);
+}
+
+/* Fallback for systems that prefer light scheme but class isn't set by JS yet */
+/* This can be removed if the JS solution is robust enough */
+@media (prefers-color-scheme: light) {
+    body:not(.sf-dark-theme):not(.sf-light-theme) {
+        /* Apply only if no explicit theme class is set */
+        --game-text-color: var(--top-bar-text-light);
+        --game-secondary-text-color: var(--top-bar-label-light);
+        --grid-bg: rgba(0, 0, 0, 0.04);
+        --score-box-bg: rgba(0, 0, 0, 0.06);
+        --message-bg: rgba(255, 255, 255, 0.8);
+        --message-text: #1A202C;
+
+        /* Match the light theme color palette */
+        /* These specific tile overrides are removed as :root now defines universal styles for them */
+
+        /* Fallback light mode layout colors */
+        --current-top-bar-bg: var(--top-bar-bg-light);
+        --current-top-bar-text: var(--top-bar-text-light);
+        --current-top-bar-label: var(--top-bar-label-light);
+        --current-top-bar-subtitle: var(--top-bar-subtitle-light);
+        --current-info-bar-divider: var(--info-bar-divider-light);
+        --current-game-board-bg: var(--game-board-bg-light);
+        --current-grid-lines: var(--grid-lines-light);
+    }
+}
+
+/* Specific body styles if needed, beyond the html, body shared ones */
+body {
+    min-height: 100%;
+    /* Use min-height for flexibility */
+    padding: 0px;
+    /* Overall padding for the iframe content */
+    color: var(--game-text-color);
+    /* Ensure body text color is themed */
+    font-family: var(--font-secondary-body);
+    /* Ensure Noto Sans Mono is default */
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: visible !important;
+}
+
+/* New Layout Styles */
+.game-header {
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: var(--font-primary);
+}
+
+.main-title {
+    font-size: 3em;
+    /* Larger to match screenshot */
+    font-weight: 700;
+    color: var(--current-top-bar-text);
+    font-family: var(--font-primary);
+    margin-bottom: 4px;
+    /* Small space between title and subtitle */
+}
+
+.sub-title {
+    font-size: 1em;
+    /* Smaller subtitle */
+    font-weight: 400;
+    /* Regular weight */
+    color: var(--current-top-bar-subtitle);
+    /* Subtitle color from screenshot */
+    font-family: var(--font-secondary-body);
+    margin-bottom: 20px;
+    /* Space below subtitle */
+}
+
+.game-info-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 0;
+    background-color: transparent;
+    border-top: 1px solid var(--current-info-bar-divider);
+    border-bottom: 1px solid var(--current-info-bar-divider);
+    border-left: 1px solid var(--current-info-bar-divider);
+    border-right: 1px solid var(--current-info-bar-divider);
+    font-family: var(--font-secondary-body);
+    position: relative;
+}
+
+.info-section {
+    padding: 15px 15px;
+    text-align: left;
+    position: relative;
+    background-color: transparent;
+}
+
+/* Specific sizing for info sections (ensure these are correctly defined as per previous steps) */
+.info-section.score-section {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 18%;
+    /* Adjusted flex-basis */
+    max-width: 135px;
+    /* Increased max-width for single-line label */
+}
+
+.info-section.how-to-play-section {
+    flex-grow: 3;
+    flex-shrink: 1;
+    flex-basis: 46%;
+    /* Adjusted flex-basis */
+}
+
+.info-section.share-section {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 18%;
+    /* Adjusted flex-basis */
+    max-width: 135px;
+    /* Increased max-width for single-line label */
+}
+
+/* Vertical dividers using pseudo-elements on the info sections */
+/* This creates a line on the LEFT of every section except the first one */
+.info-section:not(:first-child)::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: var(--current-info-bar-divider);
+}
+
+.info-label {
+    display: block;
+    font-size: 0.75em;
+    font-weight: 500;
+    color: var(--current-top-bar-label);
+    margin-bottom: 4px;
+    font-family: var(--font-secondary-body);
+    text-transform: none;
+    white-space: nowrap;
+    /* Ensure label text stays on one line */
+}
+
+.info-value {
+    display: block;
+    font-size: 1.75em;
+    /* Large score value */
+    font-weight: 700;
+    /* Bold score */
+    color: var(--current-top-bar-text);
+    /* Black score text */
+    line-height: 1.1;
+    font-family: var(--font-secondary-body);
+}
+
+#best-score {
+    color: var(--sf-lime);
+}
+
+.how-to-play-section .instructions-inline {
+    font-size: 0.875em;
+    /* Slightly larger than label */
+    color: var(--current-top-bar-text);
+    /* Black text */
+    line-height: 1.5;
+    font-weight: 400;
+    /* Regular weight */
+    font-family: var(--font-secondary-body);
+}
+
+.share-section .info-label {
+    text-align: left;
+}
+
+.share-icons {
+    display: flex;
+    align-items: center;
+    padding-top: 4px;
+}
+
+.x-logo {
+    width: 24px;
+    height: 24px;
+    color: var(--game-text-color);
+    /* This will make the logo match the theme */
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.x-logo:hover {
+    color: var(--sf-lime);
+    /* Use the stakefish lime color on hover */
+}
+
+/* Update the share section styling if needed */
+.share-section {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 4px;
+}
+
+/* Responsive adjustments for info bar to match screenshot more closely */
+/* @media (min-width: 400px) { ... } */
+/* Removed fixed breakpoint, using auto-fit */
+
+/* Game Container and Grid */
+.game-container-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0 10px 0;
+    /* Reduced bottom padding to 10px */
+    overflow: visible !important;
+}
+
+.game-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    background-color: var(--current-game-board-bg);
+    padding: var(--game-area-padding);
+    border-radius: 0;
+    margin: 0 auto;
+    box-shadow: none;
+    overflow: visible !important;
+}
+
+#tile-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: var(--grid-gap);
+    background-color: var(--current-game-board-bg);
+    border-radius: 0;
+    z-index: 1;
+    overflow: hidden !important;
+}
+
+/* Individual grid cells (empty cells background) */
+.grid-cell {
+    background-color: var(--current-grid-lines);
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 0;
+    transition: transform 0.1s ease-in-out, background-color 0.2s, color 0.2s,
+        top 0.1s ease-out, left 0.1s ease-out;
+}
+
+/* Tile styles - ensure they use the CSS variables for colors */
+.tile {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 0;
+    transition: transform 0.1s ease-in-out, background-color 0.2s, color 0.2s,
+        top 0.1s ease-out, left 0.1s ease-out;
+    background-color: var(--tile-default-bg);
+    color: var(--tile-default-text);
+    font-family: var(--font-secondary-body);
+    font-size: 1.8em;
+}
+
+/* Specific tile value colors */
+.tile.tile-2 {
+    background-color: var(--tile-2-bg);
+    color: var(--tile-2-text);
+}
+
+.tile.tile-4 {
+    background-color: var(--tile-4-bg);
+    color: var(--tile-4-text);
+}
+
+.tile.tile-8 {
+    background-color: var(--tile-8-bg);
+    color: var(--tile-8-text);
+}
+
+.tile.tile-16 {
+    background-color: var(--tile-16-bg);
+    color: var(--tile-16-text);
+}
+
+.tile.tile-32 {
+    background-color: var(--tile-32-bg);
+    color: var(--tile-32-text);
+}
+
+.tile.tile-64 {
+    background-color: var(--tile-64-bg);
+    color: var(--tile-64-text);
+}
+
+.tile.tile-128 {
+    background-color: var(--tile-128-bg);
+    color: var(--tile-128-text);
+}
+
+.tile.tile-256 {
+    background-color: var(--tile-256-bg);
+    color: var(--tile-256-text);
+}
+
+.tile.tile-512 {
+    background-color: var(--tile-512-bg);
+    color: var(--tile-512-text);
+}
+
+.tile.tile-1024 {
+    background-color: var(--tile-1024-bg);
+    color: var(--tile-1024-text);
+}
+
+.tile.tile-2048 {
+    background-color: var(--tile-2048-bg);
+    color: var(--tile-2048-text);
+}
+
+/* Adjust font size based on tile value for better fit */
+.tile.tile-2,
+.tile.tile-4,
+.tile.tile-8 {
+    font-size: 2.2em;
+}
+
+.tile.tile-16,
+.tile.tile-32,
+.tile.tile-64 {
+    font-size: 2em;
+}
+
+.tile.tile-128,
+.tile.tile-256,
+.tile.tile-512 {
+    font-size: 1.6em;
+}
+
+.tile.tile-1024,
+.tile.tile-2048 {
+    font-size: 1.3em;
+}
+
+.tile[class*="tile-"]:not(.tile-2):not(.tile-4):not(.tile-8):not(.tile-16):not(.tile-32):not(.tile-64):not(.tile-128):not(.tile-256):not(.tile-512):not(.tile-1024):not(.tile-2048) {
+    /* Super tiles */
+    background-color: var(--tile-super-bg);
+    color: var(--tile-super-text);
+    font-size: 1.2em;
+}
+
+.game-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--message-bg);
+    color: var(--message-text);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.game-message.game-over,
+.game-message.game-won {
+    opacity: 1;
+    visibility: visible;
+}
+
+.game-message p {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: var(--font-secondary-body);
+}
+
+.instructions {
+    /* margin-top: 25px; */
+    /* Removed as it's integrated into info bar */
+    /* font-size: 0.85em; */
+    /* color: var(--game-secondary-text-color); */
+    /* line-height: 1.5; */
+}
+
+.instructions strong {
+    /* color: var(--game-text-color); */
+}
+
+/* Animation for new tiles */
+.tile.new-tile {
+    animation: newTileSpawn 0.2s ease-in-out;
+}
+
+@keyframes newTileSpawn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Animation for merged tiles */
+.tile.merged-tile {
+    animation: mergedTilePulse 0.2s ease-in-out;
+}
+
+@keyframes mergedTilePulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Added styling to help differentiate tiles with the same colors */
+.tile::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0.15;
+}
+
+.tile.tile-2::after {
+    background: radial-gradient(circle, transparent 50%, rgba(255, 255, 255, 0.3) 100%);
+}
+
+.tile.tile-4::after {
+    background: radial-gradient(circle, transparent 40%, rgba(255, 255, 255, 0.4) 100%);
+}
+
+.tile.tile-8::after {
+    background: radial-gradient(circle, transparent 30%, rgba(255, 255, 255, 0.5) 100%);
+}
+
+.tile.tile-16::after {
+    background: radial-gradient(circle, transparent 20%, rgba(255, 255, 255, 0.6) 100%);
+}
+
+.tile.tile-32::after {
+    background: linear-gradient(45deg, transparent 70%, rgba(255, 255, 255, 0.3) 100%);
+}
+
+.tile.tile-64::after {
+    background: linear-gradient(45deg, transparent 60%, rgba(255, 255, 255, 0.4) 100%);
+}
+
+.tile.tile-128::after {
+    background: linear-gradient(45deg, transparent 50%, rgba(255, 255, 255, 0.5) 100%);
+}
+
+.tile.tile-256::after {
+    background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.6) 100%);
+}
+
+.tile.tile-512::after {
+    background: linear-gradient(135deg, transparent 70%, rgba(255, 255, 255, 0.3) 100%);
+}
+
+.tile.tile-1024::after {
+    background: linear-gradient(135deg, transparent 60%, rgba(255, 255, 255, 0.4) 100%);
+}
+
+.tile.tile-2048::after {
+    background: linear-gradient(135deg, transparent 50%, rgba(255, 255, 255, 0.5) 100%);
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Ensure tile text is more prominently displayed */
+.tile {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 0;
+    transition: transform 0.1s ease-in-out, background-color 0.2s, color 0.2s,
+        top 0.1s ease-out, left 0.1s ease-out;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--tile-default-bg);
+    color: var(--tile-default-text);
+}
+
+.retry-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--button-text);
+    background-color: var(--button-bg);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-family: var(--font-secondary-body);
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 767px) {
+    .container {
+        padding: 10px 15px;
+        margin-bottom: 40px;
+        /* Add extra space at bottom */
+    }
+
+    .stake-section {
+        margin-top: 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Ensure buttons and text stay visible */
+    .button-group {
+        position: relative;
+        z-index: 2;
+    }
+
+    .stake-text {
+        position: relative;
+        z-index: 2;
+    }
+
+    .main-title {
+        font-size: 2em;
+        /* Smaller main title */
+        margin-bottom: 2px;
+        white-space: normal;
+        /* Ensure text can wrap */
+    }
+
+    .sub-title {
+        font-size: 0.9em;
+        /* Smaller sub-title */
+        margin-bottom: 15px;
+        /* Reduced space below subtitle */
+        white-space: normal;
+        /* Ensure text can wrap */
+        line-height: 1.3;
+        /* Adjust line-height if it wraps to multiple lines */
+    }
+
+    .game-info-bar {
+        flex-direction: column;
+        /* Stack info sections vertically */
+        width: 100%;
+        /* Take full width of its parent (.container) */
+        margin-left: 0;
+        margin-right: 0;
+        align-items: stretch;
+        /* Make child sections take full width */
+        border: 1px solid var(--current-info-bar-divider);
+        border-radius: 0;
+        padding-left: 0;
+        /* Ensure no horizontal padding on the bar itself */
+        padding-right: 0;
+        /* Ensure no horizontal padding on the bar itself */
+    }
+
+    .info-section {
+        flex: none;
+        width: 100%;
+        /* Ensure section spans full width of game-info-bar's content area */
+        border-right: none !important;
+        border-bottom: 1px solid var(--current-info-bar-divider);
+        padding: 6px 15px;
+        /* Reduced vertical padding from 10px to 6px */
+        min-height: auto;
+        flex-direction: column;
+        /* Stack label and content vertically */
+        align-items: flex-start;
+        /* Align content to the left */
+        gap: 4px;
+        /* Space between label and its content */
+    }
+
+    .info-section:last-child {
+        border-bottom: none;
+    }
+
+    .info-section.how-to-play-section {
+        /* Keep gap if it was different, or remove if default 'gap: 5px' is fine */
+        /* gap: 5px; */
+        /* This is now default from .info-section */
+    }
+
+    .info-section .info-label {
+        font-size: 0.8em;
+        /* Slightly smaller label for stacked view */
+        color: var(--current-top-bar-label);
+        /* Consistent label color */
+        margin-bottom: 2px;
+        /* Small space below label before gap applies */
+    }
+
+    .info-section .info-value {
+        /* Applies to Score and Best numbers */
+        font-size: 1.6em;
+        /* Adjust value size if needed */
+        text-align: left;
+        /* Align to left, under the label */
+        color: var(--current-top-bar-text);
+        /* Consistent value color */
+        line-height: 1.1;
+    }
+
+    /* #best-score color is handled by its global specific rule */
+
+    .how-to-play-section .instructions-inline {
+        font-size: 0.8em;
+        text-align: left;
+        line-height: 1.3;
+        color: var(--current-top-bar-text);
+        /* Or appropriate text color */
+    }
+
+    .share-section .share-icons {
+        margin-left: 0;
+        /* Reset margin */
+        /* Ensure icon color is appropriate */
+        color: var(--current-top-bar-text);
+    }
+
+    .game-container-wrapper {
+        margin-top: 10px;
+        /* Reduced space above game board */
+    }
+
+    /* Optional: Adjust game board padding and gap for very small screens if needed */
+    /*
+    .game-container {
+        padding: 10px;
+    }
+    #tile-container {
+        gap: 8px;
+    }
+    */
+}
+
+/* Responsive adjustments for VERY NARROW mobile devices */
+@media (max-width: 420px) {
+    .main-title {
+        font-size: 1.4em;
+        /* Further reduced font size */
+        /* white-space: normal; is inherited from the 767px media query */
+        /* margin-bottom: 2px; is inherited */
+        overflow-wrap: break-word;
+        /* Allow long words to break */
+    }
+
+    .sub-title {
+        display: none !important;
+        /* Force hide the subtitle on very narrow screens */
+    }
+
+    .container {
+        padding: 8px 10px;
+        /* Reduced top/bottom padding from 10px to 8px */
+        /* --game-area-padding and --grid-gap will be inherited from the 767px query,
+           but could be further reduced here if necessary for the game board itself */
+    }
+
+    .info-section {
+        padding: 4px 10px;
+    }
+
+    .how-to-play-section .instructions-inline {
+        font-size: 0.75em;
+        line-height: 1.25;
+    }
+
+    .game-container-wrapper {
+        margin-top: 8px;
+    }
+
+    /* If info section text also becomes an issue, you can reduce its padding or font sizes here */
+    /*
+    .info-section {
+        padding: 8px 10px;
+    }
+    .info-section .info-label {
+        font-size: 0.75em;
+    }
+    .info-section .info-value {
+        font-size: 1.4em;
+    }
+    .how-to-play-section .instructions-inline {
+        font-size: 0.8em;
+    }
+    */
+}
+
+/* Responsive adjustments for EXTRA-EXTRA-NARROW mobile devices */
+@media (max-width: 375px) {
+    .container {
+        padding: 5px 10px;
+        margin-bottom: 60px;
+        /* Even more space for smallest screens */
+    }
+
+    .stake-section {
+        margin-top: 30px;
+    }
+
+    .main-title {
+        font-size: 1.2em;
+        line-height: 1.15;
+        margin-bottom: 0px;
+    }
+
+    .info-section {
+        padding: 3px 8px;
+    }
+
+    .how-to-play-section .instructions-inline {
+        font-size: 0.7em;
+        line-height: 1.2;
+    }
+
+    .game-container-wrapper {
+        margin-top: 5px;
+    }
+
+    /*
+    .sub-title {
+        // This rule is effectively overridden by display: none !important; from the 420px media query.
+        // It can be removed for cleanliness.
+    }
+    */
+
+    /* If game board variables need further adjustment for extreme narrowness */
+    /*
+    .container {
+        --game-area-padding: 5px;
+        --grid-gap: 4px;
+    }
+    */
+}
+
+html {
+    /* Ensure html also has no margin/padding that could interfere */
+    background-color: var(--current-body-bg);
+    /* Ensure html bg matches body for theme changes */
+    color: var(--current-game-text-color);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    min-height: 100%;
+    /* Ensure html element is also 100% of iframe height */
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+}
+
+/* Stake button section styles */
+.stake-section {
+    margin-top: 10px;
+    /* Reduced from 20px to 10px */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Base button styles shared between stake-button and new-game-button */
+.stake-button,
+.new-game-button {
+    display: inline-block;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+/* New game button specific styles */
+.new-game-button {
+    background-color: transparent;
+    color: var(--game-text-color);
+    border: 1px solid var(--game-text-color);
+}
+
+.new-game-button:hover {
+    background-color: var(--game-text-color);
+    color: var(--current-body-bg);
+}
+
+/* Dark theme specific styles */
+html.sf-dark-theme .stake-button {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+html.sf-dark-theme .new-game-button {
+    border-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+html.sf-dark-theme .new-game-button:hover {
+    background-color: #FFFFFF;
+    color: #1b1d21;
+}
+
+/* Light theme specific styles */
+html.sf-light-theme .stake-button {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+html.sf-light-theme .new-game-button {
+    border-color: #000000;
+    color: #000000;
+}
+
+html.sf-light-theme .new-game-button:hover {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+/* Hover states */
+.stake-button:hover {
+    background-color: var(--sf-lime);
+    color: #000000;
+}
+
+.stake-text {
+    color: var(--game-text-color);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 700;
+    /* Added bold */
+    margin: 0;
+}
